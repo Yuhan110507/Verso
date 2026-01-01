@@ -1,0 +1,377 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+
+body {
+  padding: 0 !important;
+  margin: 0 !important;
+  background-color: #FCFBF9 !important;
+  color: #3D3A36;
+}
+
+html {
+  padding: 0;
+  margin: 0;
+}
+
+/* ============================================
+   READING & CONTENT STYLES
+   ============================================ */
+
+.reading-container {
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #FAF9F7;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.story-title {
+  font-family: Georgia, serif;
+  font-size: 56px;
+  color: #2D2A26;
+  line-height: 1.2;
+}
+
+.story-content {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #3D3A36;
+}
+
+/* ============================================
+   BUTTON STYLES
+   ============================================ */
+
+.verso-button-primary {
+  padding: 10px 24px;
+  background-color: #800020;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.verso-button-primary:hover {
+  background-color: #660033;
+  box-shadow: 0 4px 12px rgba(128, 0, 32, 0.2);
+}
+
+.verso-button-secondary {
+  padding: 10px 24px;
+  background-color: transparent;
+  color: #800020;
+  border: 1px solid #800020;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.verso-button-secondary:hover {
+  background-color: rgba(128, 0, 32, 0.05);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes gentle-fold {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(15deg); }
+}
+
+.animate-gentle-fold {
+  animation: gentle-fold 0.6s ease-in-out;
+}
+
+@keyframes navSlideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* ============================================
+   PERFECT ROUNDED FLOATING NAVIGATION
+   ============================================ */
+
+/* Hide all nav elements except header */
+nav {
+  display: none !important;
+}
+
+/* Main Navigation Container */
+header {
+  /* Position - floating near top */
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  
+  /* Size */
+  width: calc(100% - 48px);
+  max-width: 1200px;
+  height: 64px;
+  padding: 0 40px;
+  
+  /* Rounded pill shape */
+  border-radius: 32px;
+  
+  /* Glass morphism effect */
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  
+  /* Border for definition */
+  border: 1px solid rgba(229, 227, 223, 0.4) !important;
+  
+  /* Floating shadow - enhanced */
+  box-shadow: 
+    0 8px 40px rgba(45, 42, 38, 0.12),
+    0 4px 16px rgba(45, 42, 38, 0.08),
+    0 2px 8px rgba(45, 42, 38, 0.04) !important;
+  
+  /* Layout */
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  
+  /* Smooth transitions */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Page load animation */
+  animation: navSlideDown 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Nav hover - lift and enhance shadow */
+header:hover {
+  transform: translateX(-50%) translateY(-4px);
+  box-shadow: 
+    0 12px 48px rgba(45, 42, 38, 0.16),
+    0 6px 20px rgba(45, 42, 38, 0.10),
+    0 3px 10px rgba(45, 42, 38, 0.06) !important;
+}
+
+/* Hidden state (scrolling down) */
+header.nav-hidden {
+  transform: translateX(-50%) translateY(-120%);
+  opacity: 0;
+}
+
+/* Scrolled state - slightly smaller */
+header.nav-scrolled {
+  height: 56px;
+  padding: 0 32px;
+  border-radius: 28px;
+  box-shadow: 
+    0 6px 32px rgba(45, 42, 38, 0.1),
+    0 3px 12px rgba(45, 42, 38, 0.05) !important;
+}
+
+/* Logo Section */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+.nav-logo:hover {
+  opacity: 0.8;
+}
+
+.nav-logo svg {
+  width: 24px;
+  height: 24px;
+  color: #800020;
+}
+
+.nav-logo span {
+  font-family: Georgia, serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #2D2A26;
+  white-space: nowrap;
+}
+
+/* Navigation Links Container */
+header nav {
+  display: flex !important;
+  align-items: center;
+  gap: 32px;
+  flex: 1;
+  justify-content: center;
+}
+
+/* Navigation Links */
+header a:not(.nav-logo) {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #75716B;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+header a:not(.nav-logo):hover {
+  color: #2D2A26;
+}
+
+/* Right Section - Buttons */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+/* Sign In - Clean Text Link */
+a[href*="/login"],
+a[href*="/sign-in"],
+.verso-button-secondary {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  
+  /* Text styling */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #75716B;
+  text-decoration: none;
+  cursor: pointer;
+  
+  /* Smooth transition */
+  transition: color 0.2s ease;
+}
+
+a[href*="/login"]:hover,
+a[href*="/sign-in"]:hover,
+.verso-button-secondary:hover {
+  color: #2D2A26;
+}
+
+/* Join Button - Prominent and Elegant */
+a[href*="/signup"],
+a[href*="/join"],
+.verso-button-primary {
+  /* Background */
+  background: #800020 !important;
+  color: white !important;
+  
+  /* Size */
+  padding: 10px 28px !important;
+  height: 40px;
+  
+  /* Rounded */
+  border-radius: 20px !important;
+  border: none !important;
+  
+  /* Typography */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  
+  /* Shadow for depth */
+  box-shadow: 0 2px 12px rgba(128, 0, 32, 0.20) !important;
+  
+  /* Remove default styling */
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  
+  /* Smooth transitions */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+a[href*="/signup"]:hover,
+a[href*="/join"]:hover,
+.verso-button-primary:hover {
+  background: #660033 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(128, 0, 32, 0.28) !important;
+}
+
+a[href*="/signup"]:active,
+a[href*="/join"]:active,
+.verso-button-primary:active {
+  transform: translateY(0);
+}
+
+/* Hero Section - Tight Spacing Below Nav */
+.hero-section,
+.landing-hero,
+main > section:first-child {
+  padding-top: 100px !important;
+  margin-top: 0 !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  header {
+    width: calc(100% - 32px) !important;
+    padding: 0 24px !important;
+    height: 56px;
+  }
+  
+  header nav {
+    gap: 20px;
+  }
+  
+  .nav-right {
+    gap: 12px;
+  }
+  
+  .hero-section {
+    padding-top: 88px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    width: calc(100% - 24px) !important;
+    padding: 0 16px !important;
+    top: 8px !important;
+  }
+  
+  header a:not(.nav-logo) {
+    font-size: 14px;
+  }
+  
+  a[href*="/login"],
+  a[href*="/sign-in"] {
+    font-size: 14px;
+  }
+  
+  a[href*="/signup"],
+  a[href*="/join"] {
+    padding: 8px 20px !important;
+    font-size: 14px;
+    height: 36px;
+  }
+}

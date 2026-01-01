@@ -1,0 +1,271 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #faf0dc;
+    color: #36454f;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: Georgia, Garamond, serif;
+    font-weight: 600;
+  }
+
+  p {
+    line-height: 1.8;
+  }
+}
+
+@layer components {
+  .verso-card {
+    @apply bg-white rounded-md border border-verso-lightGray shadow-sm;
+  }
+
+  .verso-button-primary {
+    @apply px-6 py-2 bg-verso-burgundy text-verso-cream rounded-md hover:bg-verso-brightBurgundy transition-colors;
+  }
+
+  .verso-button-secondary {
+    @apply px-6 py-2 bg-verso-sage text-verso-charcoal rounded-md hover:bg-opacity-90 transition-colors;
+  }
+
+  .verso-input {
+    @apply w-full px-4 py-2 border border-verso-lightGray rounded-md bg-verso-cream text-verso-charcoal focus:outline-none focus:border-verso-sage focus:ring-1 focus:ring-verso-sage;
+  }
+
+  .verso-text-column {
+    @apply max-w-2xl mx-auto px-8 py-12;
+  }
+
+  .verso-marginalia {
+    @apply text-sm text-verso-sage border-l-2 border-verso-sage pl-4 italic;
+  }
+}
+
+/* ====== VERSO LITERARY ANIMATIONS ====== */
+
+/* Page Turn Animation - Gentle Fold */
+@keyframes gentleFold {
+  0% {
+    transform: perspective(1000px) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(1000px) rotateY(-20deg) translateX(-5px);
+  }
+  100% {
+    transform: perspective(1000px) rotateY(0deg);
+  }
+}
+
+/* Bookmark Drop Animation */
+@keyframes bookmarkDrop {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Ink Flow Animation */
+@keyframes inkFlow {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+    opacity: 0;
+  }
+}
+
+/* Margin Note Pulse */
+@keyframes marginNotePulse {
+  0% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  60% {
+    transform: scale(1.3);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* Marginalia Effect - Hover Animation */
+@keyframes marginaliaLine {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+/* Quill Click - Ink Splash */
+@keyframes inkSplash {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+/* Book Icon Appreciation */
+@keyframes bookAppreciate {
+  0% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.8);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+/* Appreciation Particles Float */
+@keyframes particleFloat {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-20px) translateX(var(--tx, 0));
+    opacity: 0;
+  }
+}
+
+/* Bookmark Progress Fill */
+@keyframes bookmarkFill {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: var(--progress, 0%);
+  }
+}
+
+/* Page Settle - Inline Comment */
+@keyframes pageSettle {
+  0% {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Page Lift - Chapter Transition */
+@keyframes pageLift {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+}
+
+@keyframes pageDescend {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Highlight Selection Glow */
+@keyframes highlightGlow {
+  0% {
+    box-shadow: inset 0 0 0 0 rgba(156, 175, 136, 0.3);
+  }
+  100% {
+    box-shadow: inset 0 0 8px 0 rgba(156, 175, 136, 0.5);
+  }
+}
+
+/* Animation Utility Classes */
+@layer components {
+  .animate-gentle-fold {
+    animation: gentleFold 0.8s ease-in-out;
+  }
+
+  .animate-bookmark-drop {
+    animation: bookmarkDrop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .animate-ink-flow {
+    animation: inkFlow 1.2s ease-in infinite;
+  }
+
+  .animate-margin-note {
+    animation: marginNotePulse 0.6s ease-out;
+  }
+
+  .animate-marginalia-line {
+    animation: marginaliaLine 0.3s ease-out;
+  }
+
+  .animate-ink-splash {
+    animation: inkSplash 0.6s ease-out forwards;
+  }
+
+  .animate-book-appreciate {
+    animation: bookAppreciate 0.4s ease-in-out;
+  }
+
+  .animate-particle-float {
+    animation: particleFloat 1.2s ease-out forwards;
+  }
+
+  .animate-page-settle {
+    animation: pageSettle 0.5s ease-out;
+  }
+
+  .animate-page-lift {
+    animation: pageLift 0.6s ease-out forwards;
+  }
+
+  .animate-page-descend {
+    animation: pageDescend 0.6s ease-out forwards;
+  }
+
+  .animate-highlight-glow {
+    animation: highlightGlow 0.3s ease-out forwards;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
