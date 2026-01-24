@@ -48,7 +48,7 @@ const GENRES = [
 ];
 
 export default function OnboardingPage() {
-  const { user, profile, loading } = useAuth();
+  const { user, loading } = useAuth();
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [saving, setSaving] = useState(false);

@@ -1,14 +1,12 @@
 'use client';
 
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import { supabase } from '@/lib/supabase';
 import Link from 'next/link';
-import LiteraryMarginalia from '@/components/Comments/LiteraryMarginalia';
+import LiteraryMarginalia from '@/components/comments/LiteraryMarginalia';
 
 export default function WorkPage() {
   const params = useParams();
-  const router = useRouter();
   const workId = params.id as string;
 
   const [work, setWork] = useState<any>(null);

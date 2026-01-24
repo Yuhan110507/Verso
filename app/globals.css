@@ -375,3 +375,18 @@ main > section:first-child {
     height: 36px;
   }
 }
+
+/* ============================================
+   TIPTAP PROSE STYLES
+   ============================================ */
+
+.prose {
+  max-width: 65ch;
+}
+
+.prose-lg {
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+
+/* TipTap specific prose styles are imported via editor.css */

@@ -32,14 +32,29 @@ export async function GET(request: NextRequest) {
     const authorId = searchParams.get('authorId');
     const visibility = searchParams.get('visibility');
 
+    // Handle single work fetch separately
+    if (id) {
+      const { data, error } = await supabase
+        .from('works')
+        .select('*, author:users!works_author_id_fkey(uid, username, display_name, avatar_url)')
+        .eq('id', id)
+        .single();
+
+      if (error) {
+        console.error('Error fetching work:', error);
+        return NextResponse.json(
+          { error: 'Failed to fetch work' },
+          { status: 500 }
+        );
+      }
+
+      return NextResponse.json({ data });
+    }
+
+    // Handle multiple works fetch
     let query = supabase
       .from('works')
       .select('*, author:users!works_author_id_fkey(uid, username, display_name, avatar_url)');
-
-    // Filter by ID if provided
-    if (id) {
-      query = query.eq('id', id).single();
-    }
 
     // Filter by author if provided
     if (authorId) {
@@ -49,15 +64,13 @@ export async function GET(request: NextRequest) {
     // Filter by visibility (default to public only)
     if (visibility) {
       query = query.eq('visibility', visibility);
-    } else if (!id && !authorId) {
+    } else if (!authorId) {
       // Only show public works by default
       query = query.eq('visibility', 'public');
     }
 
     // Order by most recent
-    if (!id) {
-      query = query.order('created_at', { ascending: false });
-    }
+    query = query.order('created_at', { ascending: false });
 
     const { data, error } = await query;
 

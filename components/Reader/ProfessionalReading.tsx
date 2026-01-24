@@ -33,8 +33,8 @@ export function ProfessionalReading({
   author,
   category,
   content,
-  wordCount,
-  readingTime,
+  wordCount: _wordCount,
+  readingTime: _readingTime,
   publishedDate,
 }: ProfessionalReadingProps) {
   const [scrollProgress, setScrollProgress] = useState(0);

@@ -43,6 +43,7 @@ export default function WritePage() {
 
       return () => clearTimeout(timer);
     }
+    return undefined;
   }, [title, content, genre, description, authorBio]);
 
   const handleSaveDraft = () => {
@@ -128,8 +129,6 @@ export default function WritePage() {
       if (text.length === 0) {
         results.push({ type: 'info', message: 'No content to proofread' });
       } else {
-        let issuesFound = false;
-
         // ========== SPELLING & TYPOS ==========
 
         // Common misspellings
@@ -148,7 +147,6 @@ export default function WritePage() {
           const regex = new RegExp(`\\b${error}\\b`, 'gi');
           if (regex.test(text)) {
             foundCommonErrors.push(error);
-            issuesFound = true;
           }
         });
 
@@ -172,7 +170,6 @@ export default function WritePage() {
           if (lowerWord.match(/([a-z])\1\1/i)) {
             if (!tripleLetterWords.includes(word)) {
               tripleLetterWords.push(word);
-              issuesFound = true;
             }
           }
 
@@ -197,7 +194,6 @@ export default function WritePage() {
         // Common grammar mistakes
         if (text.match(/\bcould of\b|\bwould of\b|\bshould of\b/gi)) {
           results.push({ type: 'error', message: 'Use "could have" not "could of"' });
-          issuesFound = true;
         }
 
         // Incomplete sentences
@@ -206,7 +202,6 @@ export default function WritePage() {
             type: 'error',
             message: 'Incomplete sentence - ends with pronoun/article after comma'
           });
-          issuesFound = true;
         }
 
         if (text.match(/,\s+(and|but|or|so|yet|for|nor|because|although|while|since)[.!?]\s*$/i)) {
@@ -214,7 +209,6 @@ export default function WritePage() {
             type: 'error',
             message: 'Incomplete sentence - ends with conjunction after comma'
           });
-          issuesFound = true;
         }
 
         // Repeated words

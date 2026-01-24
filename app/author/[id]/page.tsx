@@ -1,6 +1,6 @@
 'use client';
 
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
@@ -8,9 +8,8 @@ import { useAuth } from '@/contexts/AuthContext';
 
 export default function AuthorPage() {
   const params = useParams();
-  const router = useRouter();
   const authorId = params.id as string;
-  const { user, profile: currentUserProfile } = useAuth();
+  const { user } = useAuth();
 
   const [author, setAuthor] = useState<any>(null);
   const [works, setWorks] = useState<any[]>([]);

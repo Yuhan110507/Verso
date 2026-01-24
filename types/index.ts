@@ -5,12 +5,21 @@ export interface UserProfile {
   username: string;
   bio?: string;
   avatar?: string;
+  avatar_url?: string;
+  display_name?: string;
   writingPhilosophy?: string;
+  writing_philosophy?: string;
   influences?: string[];
   websiteUrl?: string;
+  website_url?: string;
   roles: ('author' | 'reader' | 'moderator')[];
-  createdAt: Date;
-  updatedAt: Date;
+  favorite_genres?: string[];
+  user_type?: 'reader' | 'writer' | 'both';
+  onboarding_completed?: boolean;
+  createdAt?: Date;
+  updatedAt?: Date;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface UserPreferences {

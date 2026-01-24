@@ -22,7 +22,7 @@ export default function PrivacySettingsPage() {
   const handleToggle = (setting: keyof typeof settings) => {
     setSettings({
       ...settings,
-      [setting]: !settings[setting as string]
+      [setting]: !settings[setting]
     });
   };
 
