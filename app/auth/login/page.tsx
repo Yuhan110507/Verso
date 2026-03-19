@@ -33,19 +33,24 @@ export default function LoginPage() {
       router.push('/discover');
     } catch (err: any) {
       console.error('Login error:', err);
-      
-      if (err.code === 'auth/user-not-found') {
-        setError('No account found with this email');
-      } else if (err.code === 'auth/wrong-password') {
-        setError('Incorrect password');
-      } else if (err.code === 'auth/invalid-email') {
-        setError('Invalid email address');
-      } else if (err.code === 'auth/too-many-requests') {
-        setError('Too many attempts. Please try again later');
+      const message: string = err?.message || '';
+
+      if (message.toLowerCase().includes('failed to fetch') || message.toLowerCase().includes('networkerror') || message.toLowerCase().includes('fetch')) {
+        setError('Unable to connect to the server. Please check your internet connection and try again.');
+      } else if (message.toLowerCase().includes('invalid login credentials') || message.toLowerCase().includes('invalid email or password')) {
+        setError('Incorrect email or password.');
+      } else if (message.toLowerCase().includes('email not confirmed')) {
+        setError('Please verify your email address before signing in.');
+      } else if (message.toLowerCase().includes('too many requests') || message.toLowerCase().includes('rate limit')) {
+        setError('Too many attempts. Please wait a moment and try again.');
+      } else if (message.toLowerCase().includes('user not found')) {
+        setError('No account found with this email address.');
+      } else if (message) {
+        setError(message);
       } else {
-        setError('Failed to sign in. Please try again');
+        setError('Failed to sign in. Please try again.');
       }
-      
+
       setLoading(false);
     }
   };
