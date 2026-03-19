@@ -75,19 +75,8 @@ export default function HomePage() {
     <div
       className="min-h-screen w-full"
       style={{
-        backgroundColor: '#FCFBF9',
-        backgroundImage: `
-          radial-gradient(circle at 20% 15%, rgba(156, 175, 136, 0.15) 0%, rgba(156, 175, 136, 0.08) 25%, rgba(156, 175, 136, 0.03) 45%, transparent 70%),
-          radial-gradient(circle at 80% 20%, rgba(128, 0, 32, 0.10) 0%, rgba(128, 0, 32, 0.05) 30%, transparent 60%),
-          radial-gradient(circle at 50% 80%, rgba(250, 243, 237, 0.6) 0%, rgba(250, 243, 237, 0.3) 40%, transparent 70%),
-          radial-gradient(circle at 10% 90%, rgba(156, 175, 136, 0.10) 0%, rgba(156, 175, 136, 0.04) 35%, transparent 65%)
-        `,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: '100% 100%',
-        backgroundAttachment: 'fixed',
         margin: 0,
-        padding: 0,
-        overflow: 'hidden'
+        padding: 0
       }}
     >
       {/* Navigation Bar - Floating Glass Effect */}
@@ -1311,7 +1300,7 @@ export default function HomePage() {
       {/* Rotating Quotes Section */}
       <section className="py-32 px-6 relative overflow-hidden" style={{
         margin: 0,
-        background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.03) 0%, rgba(193, 154, 107, 0.06) 50%, rgba(128, 0, 32, 0.03) 100%)'
+        background: 'linear-gradient(to bottom, transparent 0%, rgba(128, 0, 32, 0.04) 15%, rgba(193, 154, 107, 0.07) 50%, rgba(128, 0, 32, 0.04) 85%, transparent 100%)'
       }}>
         {/* Decorative large quote marks */}
         <div style={{

@@ -22,7 +22,7 @@ export default function RootLayoutClient({
 
   return (
     <AuthProvider>
-      <div className="min-h-screen bg-verso-cream">
+      <div className="min-h-screen">
         {mounted && <Header />}
         <main className={isAuthPage ? "" : "pt-20"}>
           {children}
