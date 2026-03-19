@@ -6,10 +6,61 @@ import { useState, useEffect } from 'react';
 export default function HomePage() {
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [currentQuote, setCurrentQuote] = useState(0);
+  const [quoteVisible, setQuoteVisible] = useState(true);
+
+  const quotes = [
+    {
+      text: 'A reader lives a thousand lives before he dies. The man who never reads lives only one.',
+      author: 'George R.R. Martin',
+    },
+    {
+      text: 'So we beat on, boats against the current, borne back ceaselessly into the past.',
+      author: 'F. Scott Fitzgerald',
+      source: 'The Great Gatsby',
+    },
+    {
+      text: 'Writing is the painting of the voice.',
+      author: 'Voltaire',
+    },
+    {
+      text: 'Not all those who wander are lost.',
+      author: 'J.R.R. Tolkien',
+      source: 'The Fellowship of the Ring',
+    },
+    {
+      text: 'I took a deep breath and listened to the old brag of my heart: I am, I am, I am.',
+      author: 'Sylvia Plath',
+      source: 'The Bell Jar',
+    },
+    {
+      text: 'I can shake off everything as I write; my sorrows disappear, my courage is reborn.',
+      author: 'Anne Frank',
+    },
+    {
+      text: 'There is no friend as loyal as a book.',
+      author: 'Ernest Hemingway',
+    },
+    {
+      text: 'The world is a book, and those who do not travel read only one page.',
+      author: 'Saint Augustine',
+    },
+  ];
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setQuoteVisible(false);
+      setTimeout(() => {
+        setCurrentQuote((prev) => (prev + 1) % quotes.length);
+        setQuoteVisible(true);
+      }, 600);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [quotes.length]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -1253,6 +1304,141 @@ export default function HomePage() {
                 + Create your own group
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Rotating Quotes Section */}
+      <section className="py-32 px-6 relative overflow-hidden" style={{
+        margin: 0,
+        background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.03) 0%, rgba(193, 154, 107, 0.06) 50%, rgba(128, 0, 32, 0.03) 100%)'
+      }}>
+        {/* Decorative large quote marks */}
+        <div style={{
+          position: 'absolute',
+          top: '32px',
+          left: '6%',
+          fontSize: '200px',
+          lineHeight: 1,
+          color: '#800020',
+          opacity: 0.06,
+          fontFamily: 'Georgia, serif',
+          userSelect: 'none',
+          pointerEvents: 'none'
+        }}>
+          &ldquo;
+        </div>
+        <div style={{
+          position: 'absolute',
+          bottom: '32px',
+          right: '6%',
+          fontSize: '200px',
+          lineHeight: 1,
+          color: '#800020',
+          opacity: 0.06,
+          fontFamily: 'Georgia, serif',
+          transform: 'rotate(180deg)',
+          userSelect: 'none',
+          pointerEvents: 'none'
+        }}>
+          &ldquo;
+        </div>
+
+        <div className="max-w-3xl mx-auto text-center relative z-10">
+          {/* Label */}
+          <div style={{
+            display: 'inline-block',
+            padding: '8px 24px',
+            backgroundColor: 'rgba(128, 0, 32, 0.1)',
+            borderRadius: '24px',
+            marginBottom: '56px',
+            fontSize: '13px',
+            fontWeight: '600',
+            color: '#800020',
+            letterSpacing: '0.08em',
+            textTransform: 'uppercase'
+          }}>
+            Words That Endure
+          </div>
+
+          {/* Quote text */}
+          <div style={{
+            minHeight: '160px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            transition: 'opacity 0.6s ease, transform 0.6s ease',
+            opacity: quoteVisible ? 1 : 0,
+            transform: quoteVisible ? 'translateY(0)' : 'translateY(12px)'
+          }}>
+            <p style={{
+              fontFamily: 'Georgia, serif',
+              fontSize: 'clamp(20px, 3vw, 28px)',
+              fontStyle: 'italic',
+              color: '#2D2A26',
+              lineHeight: '1.7',
+              marginBottom: '32px',
+              fontWeight: '400',
+              letterSpacing: '0.01em'
+            }}>
+              &ldquo;{quotes[currentQuote].text}&rdquo;
+            </p>
+            <div>
+              <span style={{
+                display: 'block',
+                fontFamily: 'Georgia, serif',
+                fontSize: '17px',
+                fontWeight: '600',
+                color: '#800020',
+                marginBottom: '4px'
+              }}>
+                — {quotes[currentQuote].author}
+              </span>
+              {quotes[currentQuote].source && (
+                <span style={{
+                  display: 'block',
+                  fontFamily: 'Georgia, serif',
+                  fontSize: '14px',
+                  fontStyle: 'italic',
+                  color: '#9B9690'
+                }}>
+                  {quotes[currentQuote].source}
+                </span>
+              )}
+            </div>
+          </div>
+
+          {/* Dot indicators */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '10px',
+            marginTop: '48px'
+          }}>
+            {quotes.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => {
+                  setQuoteVisible(false);
+                  setTimeout(() => {
+                    setCurrentQuote(idx);
+                    setQuoteVisible(true);
+                  }, 300);
+                }}
+                style={{
+                  width: idx === currentQuote ? '24px' : '8px',
+                  height: '8px',
+                  borderRadius: '4px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  transition: 'all 0.4s ease',
+                  backgroundColor: idx === currentQuote ? '#800020' : 'rgba(128, 0, 32, 0.2)',
+                  padding: 0
+                }}
+                aria-label={`Quote ${idx + 1}`}
+              />
+            ))}
           </div>
         </div>
       </section>
