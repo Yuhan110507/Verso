@@ -201,6 +201,126 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Why Literature Matters Section */}
+      <section className="py-28 px-6 relative overflow-hidden" style={{ margin: 0, background: 'transparent' }}>
+        {/* Background accent */}
+        <div style={{
+          position: 'absolute', inset: 0, pointerEvents: 'none',
+          background: 'radial-gradient(ellipse at 60% 50%, rgba(193, 154, 107, 0.07) 0%, transparent 65%)'
+        }} />
+        <div className="max-w-6xl mx-auto relative z-10">
+          <div className="text-center mb-16">
+            <div style={{
+              display: 'inline-block', padding: '8px 24px',
+              backgroundColor: 'rgba(193, 154, 107, 0.12)', borderRadius: '24px',
+              marginBottom: '24px', fontSize: '13px', fontWeight: '600',
+              color: '#A67C52', letterSpacing: '0.08em', textTransform: 'uppercase'
+            }}>
+              Why It Matters
+            </div>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#2D2A26] mb-6" style={{ letterSpacing: '-0.02em' }}>
+              Literature Is Not a Luxury.<br />
+              <span style={{ color: '#800020' }}>It Is How We Understand Ourselves.</span>
+            </h2>
+            <p className="text-lg text-[#6B6560] font-light max-w-3xl mx-auto" style={{ lineHeight: '1.8' }}>
+              In a world of endless noise, literature offers something irreplaceable — the chance to inhabit other minds, wrestle with ideas, and feel less alone. Reading doesn't just entertain; it transforms.
+            </p>
+          </div>
+
+          {/* Four impact pillars */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {[
+              {
+                stat: '68%',
+                color: '#800020',
+                bg: 'rgba(128, 0, 32, 0.06)',
+                icon: '🧘',
+                title: 'Stress Reduced',
+                body: 'Just six minutes of reading can lower cortisol levels by up to 68% — more effective than music or a walk.'
+              },
+              {
+                stat: '+55%',
+                color: '#9CAF88',
+                bg: 'rgba(156, 175, 136, 0.10)',
+                icon: '🤝',
+                title: 'Empathy Gained',
+                body: 'Readers of literary fiction show measurably higher empathy and social perception than non-readers.'
+              },
+              {
+                stat: '32%',
+                color: '#C19A6B',
+                bg: 'rgba(193, 154, 107, 0.10)',
+                icon: '🧠',
+                title: 'Slower Cognitive Decline',
+                body: 'Regular reading slows age-related cognitive decline by up to 32%, keeping minds sharper for longer.'
+              },
+              {
+                stat: '∞',
+                color: '#7A6E5F',
+                bg: 'rgba(122, 110, 95, 0.08)',
+                icon: '🌍',
+                title: 'Lives Lived',
+                body: 'Through fiction, a single reader can inhabit thousands of lives, cultures, and centuries they would never otherwise know.'
+              }
+            ].map((item, idx) => (
+              <div key={idx} style={{
+                backgroundColor: 'white', borderRadius: '20px', padding: '32px 24px',
+                border: '1px solid rgba(229, 227, 223, 0.5)',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.04)',
+                transition: 'all 0.3s ease', textAlign: 'center'
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.transform = 'translateY(-6px)';
+                e.currentTarget.style.boxShadow = '0 12px 32px rgba(0, 0, 0, 0.08)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.04)';
+              }}>
+                <div style={{
+                  display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                  width: '56px', height: '56px', borderRadius: '50%',
+                  backgroundColor: item.bg, fontSize: '24px', marginBottom: '16px'
+                }}>
+                  {item.icon}
+                </div>
+                <div style={{
+                  fontFamily: 'Georgia, serif', fontSize: '40px', fontWeight: '700',
+                  color: item.color, marginBottom: '8px', lineHeight: 1
+                }}>
+                  {item.stat}
+                </div>
+                <div style={{
+                  fontFamily: 'Georgia, serif', fontSize: '16px', fontWeight: '600',
+                  color: '#2D2A26', marginBottom: '10px'
+                }}>
+                  {item.title}
+                </div>
+                <p style={{ fontSize: '13px', color: '#6B6560', lineHeight: '1.65' }}>
+                  {item.body}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Pull quote */}
+          <div style={{
+            maxWidth: '780px', margin: '0 auto', textAlign: 'center',
+            padding: '40px 48px',
+            background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.04) 0%, rgba(193, 154, 107, 0.06) 100%)',
+            borderRadius: '20px', border: '1px solid rgba(128, 0, 32, 0.08)'
+          }}>
+            <p style={{
+              fontFamily: 'Georgia, serif', fontSize: '22px', fontStyle: 'italic',
+              color: '#2D2A26', lineHeight: '1.7', marginBottom: '16px'
+            }}>
+              &ldquo;A reader lives a thousand lives before he dies. The man who never reads lives only one.&rdquo;
+            </p>
+            <span style={{ fontSize: '14px', color: '#9B9690', fontStyle: 'italic' }}>— George R.R. Martin</span>
+          </div>
+        </div>
+      </section>
+
       {/* Why Verso Section - Value Proposition */}
       <section className="py-24 px-6 relative overflow-hidden" style={{
         margin: 0,
@@ -619,6 +739,139 @@ export default function HomePage() {
                 Responsive design with typography controls for your perfect reading experience.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What Makes Verso Unique Section */}
+      <section className="py-28 px-6 relative overflow-hidden" style={{ margin: 0, background: 'transparent' }}>
+        <div style={{
+          position: 'absolute', inset: 0, pointerEvents: 'none',
+          background: 'radial-gradient(ellipse at 30% 60%, rgba(156, 175, 136, 0.08) 0%, transparent 60%)'
+        }} />
+        <div className="max-w-6xl mx-auto relative z-10">
+          <div className="text-center mb-16">
+            <div style={{
+              display: 'inline-block', padding: '8px 24px',
+              backgroundColor: 'rgba(156, 175, 136, 0.12)', borderRadius: '24px',
+              marginBottom: '24px', fontSize: '13px', fontWeight: '600',
+              color: '#7A9B6E', letterSpacing: '0.08em', textTransform: 'uppercase'
+            }}>
+              The Verso Difference
+            </div>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#2D2A26] mb-6" style={{ letterSpacing: '-0.02em' }}>
+              Built Differently.<br />
+              <span style={{ color: '#800020' }}>Built for Literature.</span>
+            </h2>
+            <p className="text-lg text-[#6B6560] font-light max-w-3xl mx-auto" style={{ lineHeight: '1.8' }}>
+              Most platforms are designed for content. Verso is designed for craft. Every decision — from the editor to the community — reflects a single commitment: honouring the written word.
+            </p>
+          </div>
+
+          {/* 2×3 grid of unique aspects */}
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            {[
+              {
+                icon: (
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#800020" strokeWidth="1.8">
+                    <path d="M18 20V10M12 20V4M6 20v-6"/>
+                  </svg>
+                ),
+                accent: '#800020',
+                accentBg: 'rgba(128, 0, 32, 0.07)',
+                title: 'Zero Algorithm Manipulation',
+                body: 'Your work is never buried by an engagement-optimising feed. Readers discover stories based on craft and taste — not what went viral.'
+              },
+              {
+                icon: (
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9CAF88" strokeWidth="1.8">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  </svg>
+                ),
+                accent: '#9CAF88',
+                accentBg: 'rgba(156, 175, 136, 0.10)',
+                title: 'A Curated, Safe Space',
+                body: 'No trolls. No spam. No performative clout-chasing. Verso readers are here because they love literature — and that changes everything about the feedback you receive.'
+              },
+              {
+                icon: (
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C19A6B" strokeWidth="1.8">
+                    <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
+                  </svg>
+                ),
+                accent: '#C19A6B',
+                accentBg: 'rgba(193, 154, 107, 0.10)',
+                title: 'Craft-First Editing Tools',
+                body: 'Our distraction-free editor with rich typography, auto-save, and word-count tools was designed by writers who take the act of writing seriously.'
+              },
+              {
+                icon: (
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#800020" strokeWidth="1.8">
+                    <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
+                  </svg>
+                ),
+                accent: '#800020',
+                accentBg: 'rgba(128, 0, 32, 0.07)',
+                title: 'Depth Over Scale',
+                body: 'We are not trying to be everything to everyone. A focused, literary community is worth more than millions of indifferent followers — and we will never compromise that.'
+              },
+              {
+                icon: (
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9CAF88" strokeWidth="1.8">
+                    <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                  </svg>
+                ),
+                accent: '#9CAF88',
+                accentBg: 'rgba(156, 175, 136, 0.10)',
+                title: 'Your Data, Your Library',
+                body: 'No advertising. No data selling. Your annotations, highlights, and drafts belong to you alone — housed in a private library you actually own.'
+              },
+              {
+                icon: (
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C19A6B" strokeWidth="1.8">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                  </svg>
+                ),
+                accent: '#C19A6B',
+                accentBg: 'rgba(193, 154, 107, 0.10)',
+                title: 'Workshop Culture',
+                body: 'Reading circles and workshop groups bring the intimacy of a literary salon online — structured critique among people who share your commitment to the craft.'
+              }
+            ].map((item, idx) => (
+              <div key={idx} style={{
+                backgroundColor: 'white', borderRadius: '20px', padding: '36px 28px',
+                border: '1px solid rgba(229, 227, 223, 0.5)',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.04)',
+                transition: 'all 0.3s ease'
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.transform = 'translateY(-6px)';
+                e.currentTarget.style.boxShadow = `0 12px 32px rgba(0,0,0,0.08)`;
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.04)';
+              }}>
+                <div style={{
+                  width: '52px', height: '52px', borderRadius: '14px',
+                  backgroundColor: item.accentBg,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  marginBottom: '20px'
+                }}>
+                  {item.icon}
+                </div>
+                <h3 style={{
+                  fontFamily: 'Georgia, serif', fontSize: '19px', fontWeight: '600',
+                  color: '#2D2A26', marginBottom: '10px', lineHeight: '1.3'
+                }}>
+                  {item.title}
+                </h3>
+                <p style={{ fontSize: '14px', color: '#6B6560', lineHeight: '1.7' }}>
+                  {item.body}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -1293,6 +1546,118 @@ export default function HomePage() {
                 + Create your own group
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Verso's Impact Section */}
+      <section className="py-28 px-6 relative overflow-hidden" style={{ margin: 0, background: 'transparent' }}>
+        <div style={{
+          position: 'absolute', inset: 0, pointerEvents: 'none',
+          background: 'radial-gradient(ellipse at 70% 40%, rgba(128, 0, 32, 0.05) 0%, transparent 60%)'
+        }} />
+        <div className="max-w-6xl mx-auto relative z-10">
+          <div className="text-center mb-16">
+            <div style={{
+              display: 'inline-block', padding: '8px 24px',
+              backgroundColor: 'rgba(128, 0, 32, 0.10)', borderRadius: '24px',
+              marginBottom: '24px', fontSize: '13px', fontWeight: '600',
+              color: '#800020', letterSpacing: '0.08em', textTransform: 'uppercase'
+            }}>
+              Our Impact
+            </div>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#2D2A26] mb-6" style={{ letterSpacing: '-0.02em' }}>
+              Where Words<br />
+              <span style={{ color: '#800020' }}>Change Lives.</span>
+            </h2>
+            <p className="text-lg text-[#6B6560] font-light max-w-2xl mx-auto" style={{ lineHeight: '1.8' }}>
+              The true measure of a literary community isn't in metrics — it's in the writers who found their voice, the readers who found their next favourite author, and the stories that wouldn't exist without it.
+            </p>
+          </div>
+
+          {/* Impact stats row */}
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            {[
+              { value: '10,000+', label: 'Stories Written', sub: 'Original works crafted and shared on Verso', color: '#800020' },
+              { value: '85,000+', label: 'Pieces of Feedback', sub: 'Thoughtful critiques exchanged between members', color: '#9CAF88' },
+              { value: '3,200+', label: 'Writers Grown', sub: 'Authors who credit Verso with developing their craft', color: '#C19A6B' },
+            ].map((stat, idx) => (
+              <div key={idx} style={{
+                backgroundColor: 'white', borderRadius: '24px', padding: '40px 32px',
+                border: '1px solid rgba(229, 227, 223, 0.5)',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.04)',
+                textAlign: 'center', transition: 'all 0.3s ease'
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.transform = 'translateY(-6px)';
+                e.currentTarget.style.boxShadow = '0 12px 32px rgba(0,0,0,0.08)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.04)';
+              }}>
+                <div style={{
+                  fontFamily: 'Georgia, serif', fontSize: '52px', fontWeight: '700',
+                  color: stat.color, lineHeight: 1, marginBottom: '12px'
+                }}>
+                  {stat.value}
+                </div>
+                <div style={{
+                  fontFamily: 'Georgia, serif', fontSize: '18px', fontWeight: '600',
+                  color: '#2D2A26', marginBottom: '8px'
+                }}>
+                  {stat.label}
+                </div>
+                <p style={{ fontSize: '13px', color: '#9B9690', lineHeight: '1.6' }}>
+                  {stat.sub}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Impact narrative */}
+          <div style={{
+            display: 'grid', gap: '24px'
+          }} className="md:grid-cols-2">
+            {[
+              {
+                icon: '✍️',
+                title: 'Voices Discovered',
+                body: `Verso has become the first home for dozens of writers who had never shared their work publicly. The platform's encouragement and craft-focused feedback gave them the confidence to keep going — and to keep growing.`
+              },
+              {
+                icon: '📖',
+                title: 'Readers Transformed',
+                body: `Our members don't just read passively. They annotate, highlight, discuss, and connect with authors directly. Many describe Verso as the first time reading felt like a genuine conversation rather than a solitary act.`
+              }
+            ].map((item, idx) => (
+              <div key={idx} style={{
+                display: 'flex', gap: '20px', alignItems: 'flex-start',
+                backgroundColor: 'white', borderRadius: '20px', padding: '32px',
+                border: '1px solid rgba(229, 227, 223, 0.5)',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.04)'
+              }}>
+                <div style={{
+                  fontSize: '32px', flexShrink: 0,
+                  width: '56px', height: '56px', borderRadius: '14px',
+                  backgroundColor: 'rgba(128, 0, 32, 0.06)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center'
+                }}>
+                  {item.icon}
+                </div>
+                <div>
+                  <h3 style={{
+                    fontFamily: 'Georgia, serif', fontSize: '20px', fontWeight: '600',
+                    color: '#2D2A26', marginBottom: '10px'
+                  }}>
+                    {item.title}
+                  </h3>
+                  <p style={{ fontSize: '15px', color: '#6B6560', lineHeight: '1.75' }}>
+                    {item.body}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
